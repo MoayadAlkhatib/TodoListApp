@@ -8,7 +8,7 @@ route.get("/login", (req,res)=>{
 });
 
 route.get("/register", (req,res)=>{
-    res.send("register");
+    res.sendFile(path.join(__dirname,'../source/views', 'register.html'))
 });
 
 module.exports= route;
