@@ -4,7 +4,7 @@ var path = require("path");
 route.use(express.static('source'));
 
 route.get("/login", (req,res)=>{
-    res.sendFile(path.join(__dirname,'../source', 'main.html'))
+    res.sendFile(path.join(__dirname,'../source/views', 'main.html'))
 });
 
 route.get("/register", (req,res)=>{
