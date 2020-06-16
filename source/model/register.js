@@ -1,4 +1,4 @@
-import hello from '../server/registers.js';
+import addUser from '../server/registers.js';
 
 document.querySelector('#reg').addEventListener('click', ()=>{
     let name = document.querySelector('#name').value;
@@ -11,5 +11,8 @@ document.querySelector('#reg').addEventListener('click', ()=>{
         'password': password,
         'confirmed password': confirm
     };
-    console.log(user);
+    //console.log(user);
+    addUser(email, password);
 })
+
+//functions for validation
