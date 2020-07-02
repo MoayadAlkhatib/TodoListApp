@@ -19,6 +19,7 @@
     "nvm-win": "^0.2.4"
   },
   "devDependencies": {
+    "dotenv-webpack": "^1.8.0",
     "nodemon": "^2.0.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"

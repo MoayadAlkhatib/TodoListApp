@@ -1,12 +1,15 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import dotenv from 'dotenv'
+dotenv.config( { path: '../../.env' });
+//console.log(process.env.API_KEY);
 
 //TODO Replace all keys using .env
 var firebaseConfig = {
-  apiKey: "AIzaSyBRxOftrKyt7RPLtc8nAkR4OnLv-M_0jfI",
-  authDomain: "todo-list-b7acd.firebaseapp.com",
-  databaseURL: "https://todo-list-b7acd.firebaseio.com",
-  projectId: "todo-list-b7acd"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATA_BASE_URL,
+  projectId: process.env.PROJECT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
