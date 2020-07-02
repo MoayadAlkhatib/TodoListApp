@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 dotenv.config( { path: '../../.env' });
 //console.log(process.env.API_KEY);
 
-//TODO Replace all keys using .env
 var firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
