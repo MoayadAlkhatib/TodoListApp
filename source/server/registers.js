@@ -1,3 +1,5 @@
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 //TODO Replace all keys using .env
 var firebaseConfig = {

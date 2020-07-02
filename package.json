@@ -6,16 +6,21 @@
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "webpack": "webpack"
   },
   "author": "Moayad Alkhatib",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.4.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "firebase": "^7.15.1"
+    "firebase": "^7.15.1",
+    "nvm-win": "^0.2.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }
