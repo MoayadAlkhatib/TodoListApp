@@ -14,10 +14,4 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
 
-function addUser(email, password){
-  auth.createUserWithEmailAndPassword(email, password)
-  .then(cred => {
-    console.log(cred);
-  })
-}
-export default addUser;
+export default auth;

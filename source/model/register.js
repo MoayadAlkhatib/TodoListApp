@@ -1,4 +1,7 @@
-import addUser from '../server/registers.js';
+import auth from '../server/registers.js';
+
+let errmessages =[];
+let err = document.querySelector('#error');
 
 document.querySelector('#reg').addEventListener('click', ()=>{
     let name = document.querySelector('#name').value;
@@ -12,7 +15,28 @@ document.querySelector('#reg').addEventListener('click', ()=>{
         'confirmed password': confirm
     };
     //console.log(user);
-    addUser(email, password);
+    if(name == ''){
+        errmessages.push('The name must be filled');
+        err.innerText = errmessages.join(','); 
+        err.style.display = "block";
+        errmessages = []; 
+    }else if(confirm !== password){
+        errmessages.push('The password does not match');
+        err.innerText = errmessages.join(','); 
+        err.style.display = "block";
+        errmessages = [];
+    }else{
+    adduser(email,password);
+    }
 })
 
-//functions for validation
+function adduser(email, password){
+    auth.createUserWithEmailAndPassword(email, password).then(cred=>{
+        console.log(cred)
+        location.assign('/user/dashboard');
+      }).catch(error =>{
+        errmessages.push(error.message);
+        err.innerText = errmessages.join(','); 
+        err.style.display = "block";
+        errmessages = [];
+    })}

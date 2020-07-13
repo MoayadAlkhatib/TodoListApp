@@ -15,4 +15,8 @@ userroute.get("/register", (req,res)=>{
     res.sendFile(path.join(__dirname,'../views', 'register.html'))
 });
 
+userroute.get("/dashboard", (req,res)=>{
+    res.sendFile(path.join(__dirname,'../views', 'dashboard.html'))
+});
+
 export default userroute;
