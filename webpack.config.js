@@ -1,9 +1,12 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 module.exports ={
-    entry: './source/model/register.js',
+    entry: {
+        reg: './source/model/register.js',
+        main: './source/model/main.js'
+    },
     output:{
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'source/build')
     },
     node: {

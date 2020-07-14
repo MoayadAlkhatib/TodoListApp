@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./source/model/register.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./source/model/main.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -237,27 +237,27 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
-/***/ "./source/model/register.js":
-/*!**********************************!*\
-  !*** ./source/model/register.js ***!
-  \**********************************/
+/***/ "./source/model/main.js":
+/*!******************************!*\
+  !*** ./source/model/main.js ***!
+  \******************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _server_registers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../server/registers.js */ \"./source/server/registers.js\");\n\r\n\r\nlet errmessages =[];\r\nlet err = document.querySelector('#error');\r\n\r\ndocument.querySelector('#reg').addEventListener('click', ()=>{\r\n    let name = document.querySelector('#name').value;\r\n    let email = document.querySelector('#email').value;\r\n    let password = document.querySelector('#password').value;\r\n    let confirm = document.querySelector('#confirm').value;\r\n    let user = {\r\n        'name': name,\r\n        'email': email,\r\n        'password': password,\r\n        'confirmed password': confirm\r\n    };\r\n    //console.log(user);\r\n    if(name == ''){\r\n        errmessages.push('The name must be filled');\r\n        err.innerText = errmessages.join(','); \r\n        err.style.display = \"block\";\r\n        errmessages = []; \r\n    }else if(confirm !== password){\r\n        errmessages.push('The password does not match');\r\n        err.innerText = errmessages.join(','); \r\n        err.style.display = \"block\";\r\n        errmessages = [];\r\n    }else{\r\n    adduser(email,password);\r\n    }\r\n})\r\n\r\nfunction adduser(email, password){\r\n    _server_registers_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createUserWithEmailAndPassword(email, password).then(cred=>{\r\n        console.log(cred)\r\n        location.assign('/user/dashboard');\r\n      }).catch(error =>{\r\n        errmessages.push(error.message);\r\n        err.innerText = errmessages.join(','); \r\n        err.style.display = \"block\";\r\n        errmessages = [];\r\n    })}\r\n\n\n//# sourceURL=webpack:///./source/model/register.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _server_firebaseinit_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../server/firebaseinit.js */ \"./source/server/firebaseinit.js\");\n\r\n\r\nlet errmessages =[];\r\nlet err = document.querySelector('#error');\r\n\r\ndocument.querySelector(\"#reg-btn\").addEventListener('click',()=>{\r\n   location.assign('/user/register');\r\n})\r\n\r\ndocument.querySelector('#login-btn').addEventListener('click', ()=>{\r\n   let email = document.querySelector('#email').value;\r\n   let password = document.querySelector('#password').value;\r\n\r\n   _server_firebaseinit_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].signInWithEmailAndPassword(email, password).then(cred=>{\r\n      console.log(cred)\r\n      location.assign('/user/dashboard')})\r\n      .catch(error =>{\r\n         errmessages.push(error.message);\r\n         err.innerText = errmessages.join(','); \r\n         err.style.display = \"block\";\r\n         errmessages = [];\r\n     })\r\n})\n\n//# sourceURL=webpack:///./source/model/main.js?");
 
 /***/ }),
 
-/***/ "./source/server/registers.js":
-/*!************************************!*\
-  !*** ./source/server/registers.js ***!
-  \************************************/
+/***/ "./source/server/firebaseinit.js":
+/*!***************************************!*\
+  !*** ./source/server/firebaseinit.js ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/index.cjs.js\");\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ \"./node_modules/firebase/auth/dist/index.esm.js\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dotenv */ \"./node_modules/dotenv/lib/main.js\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\ndotenv__WEBPACK_IMPORTED_MODULE_2___default.a.config( { path: '../../.env' });\r\n//console.log(process.env.API_KEY);\r\n\r\nvar firebaseConfig = {\r\n  apiKey: \"AIzaSyBRxOftrKyt7RPLtc8nAkR4OnLv-M_0jfI\",\r\n  authDomain: \"todo-list-b7acd.firebaseapp.com\",\r\n  databaseURL: \"https://todo-list-b7acd.firebaseio.com\",\r\n  projectId: \"todo-list-b7acd\"\r\n};\r\n\r\nfirebase_app__WEBPACK_IMPORTED_MODULE_0__[\"initializeApp\"](firebaseConfig);\r\nlet auth = firebase_app__WEBPACK_IMPORTED_MODULE_0__[\"auth\"]();\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (auth);\n\n//# sourceURL=webpack:///./source/server/registers.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/index.cjs.js\");\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ \"./node_modules/firebase/auth/dist/index.esm.js\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dotenv */ \"./node_modules/dotenv/lib/main.js\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\ndotenv__WEBPACK_IMPORTED_MODULE_2___default.a.config( { path: '../../.env' });\r\n//console.log(process.env.API_KEY);\r\n\r\nvar firebaseConfig = {\r\n  apiKey: \"AIzaSyBRxOftrKyt7RPLtc8nAkR4OnLv-M_0jfI\",\r\n  authDomain: \"todo-list-b7acd.firebaseapp.com\",\r\n  databaseURL: \"https://todo-list-b7acd.firebaseio.com\",\r\n  projectId: \"todo-list-b7acd\"\r\n};\r\n\r\nfirebase_app__WEBPACK_IMPORTED_MODULE_0__[\"initializeApp\"](firebaseConfig);\r\nlet auth = firebase_app__WEBPACK_IMPORTED_MODULE_0__[\"auth\"]();\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (auth);\n\n//# sourceURL=webpack:///./source/server/firebaseinit.js?");
 
 /***/ })
 
