@@ -1,4 +1,4 @@
-import auth from '../server/firebaseinit.js';
+import {auth } from '../server/firebaseinit.js';
 
 let errmessages =[];
 let err = document.querySelector('#error');

@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 import dotenv from 'dotenv'
 dotenv.config( { path: '../../.env' });
 //console.log(process.env.API_KEY);
@@ -13,5 +14,6 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
+let db = firebase.firestore();
 
-export default auth;
+export  {auth, db};

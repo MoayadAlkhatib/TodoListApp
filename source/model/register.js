@@ -1,4 +1,4 @@
-import auth from '../server/firebaseinit.js';
+import { auth , db } from '../server/firebaseinit.js';
 
 let errmessages =[];
 let err = document.querySelector('#error');
@@ -10,9 +10,7 @@ document.querySelector('#reg').addEventListener('click', ()=>{
     let confirm = document.querySelector('#confirm').value;
     let user = {
         'name': name,
-        'email': email,
-        'password': password,
-        'confirmed password': confirm
+        'email': email
     };
     //console.log(user);
     if(name == ''){
@@ -32,7 +30,11 @@ document.querySelector('#reg').addEventListener('click', ()=>{
 
 function adduser(email, password){
     auth.createUserWithEmailAndPassword(email, password).then(cred=>{
-        console.log(cred)
+        return db.collection('users').doc(cred.user.uid).set({
+            'name':  document.querySelector('#name').value,
+            'email': document.querySelector('#email').value
+        });
+      }).then(()=>{
         location.assign('/user/dashboard');
       }).catch(error =>{
         errmessages.push(error.message);
