@@ -32,7 +32,8 @@ function adduser(email, password){
     auth.createUserWithEmailAndPassword(email, password).then(cred=>{
         return db.collection('users').doc(cred.user.uid).set({
             'name':  document.querySelector('#name').value,
-            'email': document.querySelector('#email').value
+            'email': document.querySelector('#email').value,
+            'todos':[]
         });
       }).then(()=>{
         location.assign('/user/dashboard');
