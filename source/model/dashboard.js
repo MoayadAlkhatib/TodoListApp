@@ -8,8 +8,9 @@ auth.onAuthStateChanged(async(user) =>{
         if (!doc.exists) {
           console.log('No such document!');
         } else {
-            console.log(doc.data().name)
-            document.querySelector('#name').innerText= doc.data().name;
+         document.querySelector('#name').innerText=
+          `name: ${doc.data().name}
+           email: ${doc.data().email}`;
         }
         
     }else{
