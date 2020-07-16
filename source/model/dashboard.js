@@ -17,3 +17,9 @@ auth.onAuthStateChanged(async(user) =>{
         document.querySelector('#name').innerText= 'you have to be logged in to get access'
     }
 })
+
+document.querySelector('#logout').addEventListener('click', ()=>{
+    auth.signOut().then(()=>{
+        location.assign('/')
+    })
+})
